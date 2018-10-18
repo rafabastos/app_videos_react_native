@@ -2,6 +2,7 @@ import React from 'react';
 import {Text,View,StyleSheet,Image} from 'react-native';
 
 function Suggestion(props) {
+    const genres = props;
     return (
         <View style={styles.container}>
             <View style={styles.left}>
@@ -12,7 +13,7 @@ function Suggestion(props) {
                     }}
                 />
                 <View style={styles.genre}>
-                    <Text style={styles.genreText}>{props.genres[0]}</Text>
+                    <Text style={styles.genreText}>{genres ? genres[0]: "No category"}</Text>
                 </View>
             </View>
             <View style={styles.right}>

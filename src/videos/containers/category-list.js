@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {FlatList,Text} from 'react-native';
-import SuggestionListLayout from '../components/suggestion-list-layout';
+import {View,FlatList} from 'react-native';
 import Empty from '../components/empty';
-import Separator from '../components/vertical-separator';
+import Separator from '../../sections/components/horizontal-separator';
 import Suggestion from '../components/suggestion';
+import Layout from '../components/category-list-layout';
 
-class SuggestionList extends Component {
+class CategoryList extends Component {
     renderEmpty = () => <Empty text="No hay recomendaciones" />
     keyExtractor = item => item.id.toString();
     itemSeparator = () => {return(<Separator />)}
@@ -15,30 +15,21 @@ class SuggestionList extends Component {
         )
     }
     render() {
-        const list = [
-            {
-                title: 'title 1',
-                key: '1'
-            },
-            {
-                title: 'title 2',
-                key: '2'
-            }
-        ]
         return (
-            <SuggestionListLayout
-                title="Recomendados"
+            <Layout
+                title="Categorias"
                 >
                 <FlatList
+                    horizontal
                     keyExtractor={this.keyExtractor}
                     data={this.props.list}
                     ListEmptyComponent={this.renderEmpty} //define que mostrar caso no haya elementos
                     ItemSeparatorComponent={this.itemSeparator}
                     renderItem={this.renderItem}
                 />
-            </SuggestionListLayout>
+            </Layout>
         )
     }
 }
 
-export default SuggestionList;
+export default CategoryList;
