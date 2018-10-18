@@ -13,6 +13,7 @@ class SuggestionList extends Component {
             <Suggestion {...item} />
         )
     }
+    keyExtractor = item => item.id.toString();
     render() {
         const list = [
             {
@@ -29,7 +30,8 @@ class SuggestionList extends Component {
                 title="Recomendados"
                 >
                 <FlatList
-                    data={list}
+                    keyExtractor={this.keyExtractor}
+                    data={this.props.list}
                     ListEmptyComponent={this.renderEmpty} //define que mostrar caso no haya elementos
                     ItemSeparatorComponent={this.itemSeparator}
                     renderItem={this.renderItem}
