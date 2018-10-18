@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
 import {FlatList,Text} from 'react-native';
+import SuggestionListLayout from '../components/suggestion-list-layout';
+import Empty from '../components/empty';
+import Separator from '../components/vertical-separator';
+import Suggestion from '../components/suggestion';
 
 class SuggestionList extends Component {
+    renderEmpty = () => <Empty text="No hay recomendaciones" />
+    itemSeparator = () => {return(<Separator />)}
+    renderItem = ({item}) => {
+        return (
+            <Suggestion {...item} />
+        )
+    }
     render() {
         const list = [
             {
@@ -14,10 +25,16 @@ class SuggestionList extends Component {
             }
         ]
         return (
-            <FlatList
-                data={list}
-                renderItem={({item})=><Text>{item.title}</Text>}
-            />
+            <SuggestionListLayout
+                title="Recomendados"
+                >
+                <FlatList
+                    data={list}
+                    ListEmptyComponent={this.renderEmpty} //define que mostrar caso no haya elementos
+                    ItemSeparatorComponent={this.itemSeparator}
+                    renderItem={this.renderItem}
+                />
+            </SuggestionListLayout>
         )
     }
 }
