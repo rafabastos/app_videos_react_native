@@ -2,7 +2,7 @@ import React from 'react';
 import {Text,View,StyleSheet,Image} from 'react-native';
 
 function Suggestion(props) {
-    const genres = props;
+    const genres = props.genres;
     return (
         <View style={styles.container}>
             <View style={styles.left}>

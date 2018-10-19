@@ -14,8 +14,8 @@ export default class App extends Component<Props> {
         categoryList: [],
     }
     async componentDidMount() {
-        const movies = await API.getSuggestion(10);
-        const categories = await API.getMovies(10);
+        const movies = await API.getSuggestion(8);
+        const categories = await API.getMovies();
         this.setState({
             suggestionList: movies,
             categoryList: categories,
